@@ -2,13 +2,13 @@
 
 function issetPostParams(string ...$params): bool {
 foreach ($params as $param) {
-if (!isset($_POST[$param])) {
+    if (!isset($_POST[$param])) {
 // Si un seul paramètres donnés n'est pas là, alors je retourne false.
-return false;
-}
+        return false;
+    }
 }
 //Si on arrive jusqu'ici, ca signifie que tous les paramètres sont présents.
-return true;
+    return true;
 }
 
 /**
@@ -18,12 +18,12 @@ return true;
 */
 function sanitize($data) {
 // Supprime les espaces superflus en début et fin de chaine.
-$data = trim($data);
+    $data = trim($data);
 // Supprime les antislashes que les hackers pourraient utiliser pour échapper des caractères spéciaux.
-$data = stripslashes($data);
+    $data = stripslashes($data);
 // Transforme certains caractères spéciaux en entités HTML pour les rendre innofensifs.
-$data = htmlspecialchars($data);
+    $data = htmlspecialchars($data);
 // Ajoute des slashes pour éviter de fermer les chaînes de caractères dans le formulaire.
-$data = addslashes($data);
-return $data;
+    $data = addslashes($data);
+    return $data;
 }
